@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../routes/app_pages.dart';
@@ -10,6 +11,8 @@ import '../../../routes/app_pages.dart';
 class LoginController extends GetxController {
   final TextEditingController userC = TextEditingController();
   final TextEditingController passC = TextEditingController();
+
+  final box = GetStorage();
 
   var password = "";
 
@@ -32,6 +35,8 @@ class LoginController extends GetxController {
         password = result["password"].toString();
 
         if (pass == password) {
+          box.write("data", user);
+
           Get.snackbar("Berhasil Login", "Selamat Datang");
           Get.offAndToNamed(Routes.home);
         } else {

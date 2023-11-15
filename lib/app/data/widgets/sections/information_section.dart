@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-import '../../../modules/home/controllers/home_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../constants/color.dart';
 import '../../constants/file_string.dart';
 import '../tools/text_widget.dart';
 
-class HomeSection extends StatelessWidget {
-  HomeSection({
+class InformationSection extends StatelessWidget {
+  const InformationSection({
     super.key,
   });
-
-  final box = GetStorage();
-  final homeC = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +34,7 @@ class HomeSection extends StatelessWidget {
                 child: Column(
                   children: [
                     const TextWidget(
-                      title: "Hallo, Selamat Datang!",
+                      title: "INFORMASI RUMAH SAKIT",
                       color: cWhite,
                       weight: FontWeight.w800,
                       size: 26,
@@ -60,51 +55,14 @@ class HomeSection extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () => Get.toNamed(Routes.information),
+                      onPressed: () {},
                       child: const SizedBox(
                         width: 300,
                         child: Center(
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextWidget(
-                              title: "INFORMASI RUMAH SAKIT",
-                              color: cRed,
-                              weight: FontWeight.w500,
-                              size: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        side: const BorderSide(
-                          width: 1,
-                          color: cRed,
-                        ),
-                        backgroundColor: cWhite,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            5,
-                          ),
-                        ),
-                      ),
-                      onPressed: () => Get.bottomSheet(
-                        Container(
-                          height: 500,
-                          color: cWhite,
-                        ),
-                      ),
-                      child: const SizedBox(
-                        width: 300,
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextWidget(
-                              title: "DATA KEPEGAWAIAN",
+                              title: "PENDAFTARAN PASIEN BARU",
                               color: cRed,
                               weight: FontWeight.w500,
                               size: 16,
@@ -136,7 +94,103 @@ class HomeSection extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextWidget(
-                              title: "PENGADUAN FASILITAS",
+                              title: "PENDAFTARAN PASIEN POLI",
+                              color: cRed,
+                              weight: FontWeight.w500,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        side: const BorderSide(
+                          width: 1,
+                          color: cRed,
+                        ),
+                        backgroundColor: cWhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () => Get.toNamed(Routes.poli),
+                      child: const SizedBox(
+                        width: 300,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextWidget(
+                              title: "JADWAL POLI",
+                              color: cRed,
+                              weight: FontWeight.w500,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        side: const BorderSide(
+                          width: 1,
+                          color: cRed,
+                        ),
+                        backgroundColor: cWhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextWidget(
+                              title: "DAFTAR DOKTER",
+                              color: cRed,
+                              weight: FontWeight.w500,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        side: const BorderSide(
+                          width: 1,
+                          color: cRed,
+                        ),
+                        backgroundColor: cWhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () => Get.toNamed(Routes.bed),
+                      child: const SizedBox(
+                        width: 300,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextWidget(
+                              title: "KAMAR INAP",
                               color: cRed,
                               weight: FontWeight.w500,
                               size: 16,

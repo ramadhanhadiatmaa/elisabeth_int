@@ -9,7 +9,6 @@ abstract class Routes {
   static const information = _Paths.information;
   static const bed = _Paths.bed;
   static const poli = _Paths.poli;
-  static const poliUpdate = _Paths.poliUpdate;
 }
 
 abstract class _Paths {
@@ -20,5 +19,4 @@ abstract class _Paths {
   static const information = '/information';
   static const bed = '/bed';
   static const poli = '/poli';
-  static const poliUpdate = '/poli-update';
 }
