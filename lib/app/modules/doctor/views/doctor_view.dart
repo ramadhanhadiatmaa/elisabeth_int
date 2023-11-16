@@ -1,22 +1,22 @@
+import '../../../data/constants/color.dart';
+import '../../../data/widgets/sections/dokter_section.dart';
+import '../../../data/widgets/tools/login_validation.dart';
+import '../../../routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../data/constants/color.dart';
-import '../../../data/widgets/sections/bed_section.dart';
-import '../../../data/widgets/tools/login_validation.dart';
-import '../../../routes/app_pages.dart';
-import '../controllers/bed_controller.dart';
+import '../controllers/doctor_controller.dart';
 
-class BedView extends GetView<BedController> {
-  BedView({Key? key}) : super(key: key);
+class DoctorView extends GetView<DoctorController> {
+  DoctorView({Key? key}) : super(key: key);
 
-  final bedC = Get.put(BedController());
+  final doctorC = Get.put(DoctorController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kamar Inap'),
+        title: const Text('Daftar Dokter'),
         backgroundColor: cRed,
         centerTitle: true,
         leading: IconButton(
@@ -27,11 +27,11 @@ class BedView extends GetView<BedController> {
         ),
       ),
       body: FutureBuilder(
-          future: bedC.checkData(),
+          future: doctorC.checkData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return snapshot.data!
-                  ? BedSection(bedC: bedC)
+                  ? DokterSection(doctorC: doctorC)
                   : const LoginValidation();
             } else {
               return const Center(

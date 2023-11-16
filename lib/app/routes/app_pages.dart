@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/bed/bindings/bed_binding.dart';
 import '../modules/bed/views/bed_view.dart';
-import '../modules/data_booking/bindings/data_booking_binding.dart';
-import '../modules/data_booking/views/data_booking_view.dart';
+import '../modules/doctor/bindings/doctor_binding.dart';
+import '../modules/doctor/views/doctor_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/information/bindings/information_binding.dart';
@@ -27,29 +27,29 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.dataBooking,
-      page: () => const DataBookingView(),
-      binding: DataBookingBinding(),
-    ),
-    GetPage(
       name: _Paths.login,
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.information,
-      page: () => const InformationView(),
+      page: () => InformationView(),
       binding: InformationBinding(),
     ),
     GetPage(
       name: _Paths.bed,
-      page: () => const BedView(),
+      page: () => BedView(),
       binding: BedBinding(),
     ),
     GetPage(
       name: _Paths.poli,
       page: () => PoliView(),
       binding: PoliBinding(),
+    ),
+    GetPage(
+      name: _Paths.doctor,
+      page: () => DoctorView(),
+      binding: DoctorBinding(),
     ),
   ];
 }
