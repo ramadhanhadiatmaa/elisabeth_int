@@ -151,7 +151,7 @@ class InformationSection extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(Routes.doctor),
                       child: const SizedBox(
                         width: 300,
                         child: Center(

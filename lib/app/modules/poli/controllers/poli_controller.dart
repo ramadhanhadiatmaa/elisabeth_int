@@ -1,24 +1,25 @@
 import 'dart:convert';
 
-import 'package:elisabeth_int/app/data/models/poli_models.dart';
-import 'package:elisabeth_int/app/data/services/api_service.dart';
-import 'package:elisabeth_int/app/routes/app_pages.dart';
+import '../../../data/models/poli_models.dart';
+import '../../../data/services/api_service.dart';
+import '../../../routes/app_pages.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 class PoliController extends GetxController {
   RxBool isLoading = true.obs;
 
   var poliList = <PoliModel>[].obs;
-
-  var poli = "".obs;
-
   var items = <String>[].obs;
   var doctors = <String>[].obs;
+  var poli = "".obs;
   var statC = "".obs;
   var namaC = "".obs;
   var id = "".obs;
+
+  final box = GetStorage();
 
   @override
   void onInit() {
@@ -26,6 +27,11 @@ class PoliController extends GetxController {
     fetchDropDown();
     fetchDokter();
     super.onInit();
+  }
+
+  Future<bool> checkData() async {
+    await GetStorage.init();
+    return box.hasData('data');
   }
 
   Future<void> fetchData() async {
