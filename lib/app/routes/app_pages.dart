@@ -10,6 +10,8 @@ import '../modules/information/bindings/information_binding.dart';
 import '../modules/information/views/information_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/pasien/bindings/pasien_binding.dart';
+import '../modules/pasien/views/pasien_view.dart';
 import '../modules/poli/bindings/poli_binding.dart';
 import '../modules/poli/views/poli_view.dart';
 
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.doctor,
       page: () => DoctorView(),
       binding: DoctorBinding(),
+    ),
+    GetPage(
+      name: _Paths.pasien,
+      page: () => PasienView(),
+      binding: PasienBinding(),
     ),
   ];
 }

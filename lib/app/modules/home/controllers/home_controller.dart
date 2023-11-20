@@ -1,3 +1,4 @@
+import 'package:elisabeth_int/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -7,5 +8,10 @@ class HomeController extends GetxController {
   Future<bool> checkData() async {
     await GetStorage.init();
     return box.hasData('data');
+  }
+
+  void logout() {
+    box.remove("data");
+    Get.offAllNamed(Routes.login);
   }
 }

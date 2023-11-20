@@ -145,6 +145,37 @@ class HomeSection extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: cRed,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        homeC.logout();
+                      },
+                      child: const SizedBox(
+                        width: 240,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextWidget(
+                              title: "LOG OUT",
+                              color: cWhite,
+                              weight: FontWeight.w500,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

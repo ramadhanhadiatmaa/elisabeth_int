@@ -55,46 +55,14 @@ class InformationSection extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(Routes.pasien),
                       child: const SizedBox(
                         width: 300,
                         child: Center(
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextWidget(
-                              title: "PENDAFTARAN PASIEN BARU",
-                              color: cRed,
-                              weight: FontWeight.w500,
-                              size: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        side: const BorderSide(
-                          width: 1,
-                          color: cRed,
-                        ),
-                        backgroundColor: cWhite,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            5,
-                          ),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: const SizedBox(
-                        width: 300,
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextWidget(
-                              title: "PENDAFTARAN PASIEN POLI",
+                              title: "DAFTAR PASIEN",
                               color: cRed,
                               weight: FontWeight.w500,
                               size: 16,
@@ -192,6 +160,34 @@ class InformationSection extends StatelessWidget {
                             child: TextWidget(
                               title: "KAMAR INAP",
                               color: cRed,
+                              weight: FontWeight.w500,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: cRed,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () => Get.offAllNamed(Routes.home),
+                      child: const SizedBox(
+                        width: 240,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextWidget(
+                              title: "KEMBALI",
+                              color: cWhite,
                               weight: FontWeight.w500,
                               size: 16,
                             ),

@@ -9,6 +9,7 @@ abstract class Routes {
   static const bed = _Paths.bed;
   static const poli = _Paths.poli;
   static const doctor = _Paths.doctor;
+  static const pasien = _Paths.pasien;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const bed = '/bed';
   static const poli = '/poli';
   static const doctor = '/doctor';
+  static const pasien = '/pasien';
 }
