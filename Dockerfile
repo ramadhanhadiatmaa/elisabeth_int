@@ -42,7 +42,9 @@ COPY . .
 RUN dart pub get && \
     dart pub global activate webdev 
 
-RUN flutter build web --release --web-renderer html
+RUN flutter build web --release 
+
+#--web-renderer html
 
 # Use NGINX as a lightweight HTTP server
 FROM nginx:alpine
