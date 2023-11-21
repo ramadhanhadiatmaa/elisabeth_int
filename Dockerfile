@@ -13,7 +13,7 @@ FROM ghcr.io/cirruslabs/flutter:3.13.7 as build
 
 # Dockerfile
 ARG ENV_CONTENT
-RUN echo "$ENV_CONTENT" > .env
+RUN echo "$ENV_CONTENT" > dotenv
 
 # Set environment variables from the .env file
 ENV BASE_URL_K=$BASE_URL_K

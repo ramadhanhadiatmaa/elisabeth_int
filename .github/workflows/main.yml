@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create .env file
+      - name: Create dotenv file
         run: |
-          echo "BASE_URL_K=${{ secrets.BASE_URL_K }}" >> .env
-          echo "BASE_URL_P=${{ secrets.BASE_URL_P }}" >> .env
-          echo "BASE_URL_A=${{ secrets.BASE_URL_A }}" >> .env
-          echo "BASE_URL_D=${{ secrets.BASE_URL_D }}" >> .env
-          echo "BASE_URL_B=${{ secrets.BASE_URL_B }}" >> .env
-          echo "BASE_HEAD=${{ secrets.BASE_HEAD }}" >> .env
-          echo "BASE_KEY=${{ secrets.BASE_KEY }}" >> .env
-          echo "Contents of .env file:"
-          cat .env
+          echo "BASE_URL_K=${{ secrets.BASE_URL_K }}" >> dotenv
+          echo "BASE_URL_P=${{ secrets.BASE_URL_P }}" >> dotenv
+          echo "BASE_URL_A=${{ secrets.BASE_URL_A }}" >> dotenv
+          echo "BASE_URL_D=${{ secrets.BASE_URL_D }}" >> dotenv
+          echo "BASE_URL_B=${{ secrets.BASE_URL_B }}" >> dotenv
+          echo "BASE_HEAD=${{ secrets.BASE_HEAD }}" >> dotenv
+          echo "BASE_KEY=${{ secrets.BASE_KEY }}" >> dotenv
+          echo "Contents of dotenv file:"
+          cat dotenv
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ vars.CONTAINER_NAME }}:v1.0
-          build-args: ENV_CONTENT="$(cat .env)"
+          build-args: ENV_CONTENT="$(cat dotenv)"
 
   deployment:
     needs: build
