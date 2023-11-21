@@ -27,6 +27,8 @@ ENV BASE_KEY=$BASE_KEY
 # Set the working directory
 WORKDIR /app
 
+COPY dotenv /app/dotenv
+
 # Copy the pubspec.* files to leverage Docker’s caching mechanism
 COPY pubspec.* ./
 
