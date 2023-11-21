@@ -15,6 +15,15 @@ FROM ghcr.io/cirruslabs/flutter:3.13.7 as build
 ARG ENV_CONTENT
 RUN echo "$ENV_CONTENT" > .env
 
+# Set environment variables from the .env file
+ENV BASE_URL_K=$BASE_URL_K
+ENV BASE_URL_P=$BASE_URL_P
+ENV BASE_URL_A=$BASE_URL_A
+ENV BASE_URL_D=$BASE_URL_D
+ENV BASE_URL_B=$BASE_URL_B
+ENV BASE_HEAD=$BASE_HEAD
+ENV BASE_KEY=$BASE_KEY
+
 # Set the working directory
 WORKDIR /app
 
