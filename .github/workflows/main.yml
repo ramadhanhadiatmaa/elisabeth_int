@@ -8,6 +8,17 @@ jobs:
     environment: staging
     runs-on: ubuntu-latest
     steps:
+      - name: Display secrets
+        run: |
+          echo "BASE_URL_K: ${{ secrets.BASE_URL_K }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_URL_P }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_URL_A }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_URL_D }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_URL_B }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_HEAD }}"
+          echo "BASE_URL_P: ${{ secrets.BASE_KEY }}"
+          # Add more environment variables as needed
+
       - name: Checkout
         uses: actions/checkout@v3
 
