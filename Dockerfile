@@ -11,6 +11,10 @@
 # Use the official Flutter image as the base image
 FROM ghcr.io/cirruslabs/flutter:3.13.7 as build
 
+# Dockerfile
+ARG ENV_CONTENT
+RUN echo "$ENV_CONTENT" > .env
+
 # Set the working directory
 WORKDIR /app
 

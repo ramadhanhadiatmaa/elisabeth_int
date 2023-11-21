@@ -39,7 +39,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ vars.CONTAINER_NAME }}:v1.0
-          build-args: ENV_FILE_CONTENT="$(cat .env)"
+          build-args: ENV_CONTENT="$(cat .env)"
 
   deployment:
     needs: build
