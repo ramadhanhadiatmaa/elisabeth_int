@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
-  await dotenv.load(fileName: 'dotenv');
+  await dotenv.load(fileName: '.env');
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

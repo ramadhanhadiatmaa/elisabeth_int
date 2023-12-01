@@ -11,23 +11,8 @@
 # Use the official Flutter image as the base image
 FROM ghcr.io/cirruslabs/flutter:3.13.7 as build
 
-# Dockerfile
-ARG ENV_CONTENT
-RUN echo "$ENV_CONTENT" > dotenv
-
-# Set environment variables from the .env file
-ENV BASE_URL_K=$BASE_URL_K
-ENV BASE_URL_P=$BASE_URL_P
-ENV BASE_URL_A=$BASE_URL_A
-ENV BASE_URL_D=$BASE_URL_D
-ENV BASE_URL_B=$BASE_URL_B
-ENV BASE_HEAD=$BASE_HEAD
-ENV BASE_KEY=$BASE_KEY
-
 # Set the working directory
 WORKDIR /app
-
-COPY dotenv /app/dotenv
 
 # Copy the pubspec.* files to leverage Docker’s caching mechanism
 COPY pubspec.* ./
@@ -42,9 +27,7 @@ COPY . .
 RUN dart pub get && \
     dart pub global activate webdev 
 
-RUN flutter build web --release 
-
-#--web-renderer html
+RUN flutter build web --release --web-renderer html
 
 # Use NGINX as a lightweight HTTP server
 FROM nginx:alpine
