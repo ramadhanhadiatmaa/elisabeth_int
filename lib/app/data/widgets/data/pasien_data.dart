@@ -20,9 +20,17 @@ class DataPasien extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextWidget(
-            title: title, color: cBlack, weight: FontWeight.w500, size: 12),
-        TextWidget(
+        SizedBox(
+          width: 110,
+          child: TextWidget(
+              title: title, color: cBlack, weight: FontWeight.w500, size: 12),
+        ),
+        const TextWidget(
+            title: ":", color: cBlack, weight: FontWeight.w500, size: 12),
+        const SizedBox(
+          width: 10,
+        ),
+        TextWidgetSelect(
             title: data, color: cBlack, weight: FontWeight.w500, size: 12),
       ],
     );

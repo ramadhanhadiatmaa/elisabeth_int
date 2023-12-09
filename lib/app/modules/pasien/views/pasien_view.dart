@@ -5,7 +5,6 @@ import 'package:elisabeth_int/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../data/widgets/data/pasien_data.dart';
 import '../../../data/widgets/tools/login_validation.dart';
@@ -52,10 +51,6 @@ class PasienView extends GetView<PasienController> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        TabWidget(
-                                          title: "QR Code",
-                                          size: 100,
-                                        ),
                                         SizedBox(
                                           width: 2,
                                         ),
@@ -121,6 +116,9 @@ class PasienView extends GetView<PasienController> {
                                         ),
                                       ],
                                     ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     Expanded(
                                       child: Obx(
                                         () => ListView.builder(
@@ -139,28 +137,6 @@ class PasienView extends GetView<PasienController> {
                                                           CrossAxisAlignment
                                                               .center,
                                                       children: [
-                                                        SizedBox(
-                                                          width: 100,
-                                                          child: Center(
-                                                            child: SizedBox(
-                                                              height: 40,
-                                                              width: 40,
-                                                              child:
-                                                                  QrImageView(
-                                                                data: pasienC
-                                                                    .bookingList[
-                                                                        index]
-                                                                    .id,
-                                                                version:
-                                                                    QrVersions
-                                                                        .auto,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 2,
-                                                        ),
                                                         SizedBox(
                                                           width: 120,
                                                           child: Center(
@@ -187,11 +163,13 @@ class PasienView extends GetView<PasienController> {
                                                         ),
                                                         SizedBox(
                                                           width: 240,
-                                                          child: TextWidget(
+                                                          child:
+                                                              TextWidgetSelect(
                                                             title: pasienC
                                                                 .bookingList[
                                                                     index]
-                                                                .nama,
+                                                                .nama
+                                                                .toUpperCase(),
                                                             color: cBlack,
                                                             weight:
                                                                 FontWeight.w500,
@@ -248,15 +226,17 @@ class PasienView extends GetView<PasienController> {
                                                         ),
                                                         SizedBox(
                                                           width: 160,
-                                                          child: TextWidget(
-                                                            title: pasienC
-                                                                .bookingList[
-                                                                    index]
-                                                                .poli,
-                                                            color: cBlack,
-                                                            weight:
-                                                                FontWeight.w500,
-                                                            size: 12,
+                                                          child: Center(
+                                                            child: TextWidget(
+                                                              title: pasienC
+                                                                  .bookingList[
+                                                                      index]
+                                                                  .poli,
+                                                              color: cBlack,
+                                                              weight: FontWeight
+                                                                  .w500,
+                                                              size: 12,
+                                                            ),
                                                           ),
                                                         ),
                                                         const SizedBox(
@@ -334,133 +314,203 @@ class PasienView extends GetView<PasienController> {
                                                                             index]
                                                                         .id);
 
-                                                                Get.bottomSheet(
-                                                                  Container(
-                                                                    height: 500,
-                                                                    color:
-                                                                        cWhite,
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: const EdgeInsets
-                                                                          .all(
-                                                                          20.0),
-                                                                      child:
-                                                                          Column(
-                                                                        children: [
-                                                                          SizedBox(
-                                                                            width:
-                                                                                600,
-                                                                            child:
-                                                                                Obx(
-                                                                              () => Column(
-                                                                                children: [
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Nama Pasien: ",
-                                                                                    data: pasienC.namaC.value,
+                                                                Get.defaultDialog(
+                                                                  title: "",
+                                                                  titleStyle:
+                                                                      const TextStyle(
+                                                                    fontSize: 1,
+                                                                  ),
+                                                                  content:
+                                                                      Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        height:
+                                                                            550,
+                                                                        color:
+                                                                            cWhite,
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .all(
+                                                                              20.0),
+                                                                          child:
+                                                                              Column(
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.center,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            children: [
+                                                                              SizedBox(
+                                                                                width: 400,
+                                                                                child: Obx(
+                                                                                  () => Column(
+                                                                                    children: [
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Nama Pasien ",
+                                                                                        data: pasienC.namaC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Nama Pasien ",
+                                                                                        data: pasienC.poliC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "KTP ",
+                                                                                        data: pasienC.ktpC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Nomor RM ",
+                                                                                        data: pasienC.rmC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Lama/Baru ",
+                                                                                        data: (pasienC.rmC.value == "") ? "Baru" : "Lama",
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Jenis Bayar ",
+                                                                                        data: pasienC.bayarC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Tanggal Daftar ",
+                                                                                        data: "${pasienC.tanggalC.value} ${pasienC.bulanC.value}",
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Tempat Lahir ",
+                                                                                        data: pasienC.tempatC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Tanggal Lahir ",
+                                                                                        data: pasienC.lahirC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Nomor Telepon ",
+                                                                                        data: pasienC.teleponC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Alamat ",
+                                                                                        data: pasienC.alamatC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Kelamin ",
+                                                                                        data: pasienC.kelaminC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Agama ",
+                                                                                        data: pasienC.agamaC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Ibu ",
+                                                                                        data: pasienC.ibuC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Keluarga ",
+                                                                                        data: pasienC.keluargaC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Suku ",
+                                                                                        data: pasienC.sukuC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Pekerjaan ",
+                                                                                        data: pasienC.pekerjaanC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Kabupaten ",
+                                                                                        data: pasienC.kabupatenC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Kecamatan ",
+                                                                                        data: pasienC.kecamatanC.value.toUpperCase(),
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
+                                                                                        title: "Desa ",
+                                                                                        data: pasienC.desaC.value.toUpperCase(),
+                                                                                      ),
+                                                                                    ],
                                                                                   ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Nama Pasien: ",
-                                                                                    data: pasienC.poliC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "KTP: ",
-                                                                                    data: pasienC.ktpC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Nomor Rekam Medis: ",
-                                                                                    data: pasienC.rmC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Lama/Baru: ",
-                                                                                    data: (pasienC.rmC.value == "") ? "Baru" : "Lama",
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Jenis Bayar: ",
-                                                                                    data: pasienC.bayarC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Tanggal Daftar: ",
-                                                                                    data: "${pasienC.tanggalC.value} ${pasienC.bulanC.value}",
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Tempat Lahir: ",
-                                                                                    data: pasienC.tempatC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Tanggal Lahir: ",
-                                                                                    data: pasienC.lahirC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Nomor Telepon: ",
-                                                                                    data: pasienC.teleponC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Alamat: ",
-                                                                                    data: pasienC.alamatC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Kelamin: ",
-                                                                                    data: pasienC.kelaminC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Agama: ",
-                                                                                    data: pasienC.agamaC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Ibu: ",
-                                                                                    data: pasienC.ibuC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Keluarga: ",
-                                                                                    data: pasienC.keluargaC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Suku: ",
-                                                                                    data: pasienC.sukuC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Pekerjaan: ",
-                                                                                    data: pasienC.pekerjaanC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Kabupaten: ",
-                                                                                    data: pasienC.kabupatenC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Kecamatan: ",
-                                                                                    data: pasienC.kecamatanC.value,
-                                                                                  ),
-                                                                                  DataPasien(
-                                                                                    pasienC: pasienC,
-                                                                                    title: "Desa: ",
-                                                                                    data: pasienC.desaC.value,
-                                                                                  ),
-                                                                                ],
+                                                                                ),
                                                                               ),
-                                                                            ),
+                                                                            ],
                                                                           ),
-                                                                        ],
+                                                                        ),
                                                                       ),
-                                                                    ),
+                                                                    ],
                                                                   ),
                                                                 );
                                                               },
