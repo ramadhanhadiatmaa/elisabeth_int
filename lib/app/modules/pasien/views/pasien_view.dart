@@ -325,7 +325,7 @@ class PasienView extends GetView<PasienController> {
                                                                     children: [
                                                                       Container(
                                                                         height:
-                                                                            550,
+                                                                            600,
                                                                         color:
                                                                             cWhite,
                                                                         child:
@@ -341,7 +341,7 @@ class PasienView extends GetView<PasienController> {
                                                                                 MainAxisAlignment.center,
                                                                             children: [
                                                                               SizedBox(
-                                                                                width: 400,
+                                                                                width: 700,
                                                                                 child: Obx(
                                                                                   () => Column(
                                                                                     children: [
@@ -355,7 +355,7 @@ class PasienView extends GetView<PasienController> {
                                                                                       ),
                                                                                       DataPasien(
                                                                                         pasienC: pasienC,
-                                                                                        title: "Nama Pasien ",
+                                                                                        title: "Poli Tujuan ",
                                                                                         data: pasienC.poliC.value,
                                                                                       ),
                                                                                       const SizedBox(
@@ -371,8 +371,16 @@ class PasienView extends GetView<PasienController> {
                                                                                       ),
                                                                                       DataPasien(
                                                                                         pasienC: pasienC,
+                                                                                        title: "BPJS ",
+                                                                                        data: pasienC.bpjsC.value,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        height: 10,
+                                                                                      ),
+                                                                                      DataPasien(
+                                                                                        pasienC: pasienC,
                                                                                         title: "Nomor RM ",
-                                                                                        data: pasienC.rmC.value,
+                                                                                        data: (pasienC.rmC.value == "") ? "-" : pasienC.rmC.value,
                                                                                       ),
                                                                                       const SizedBox(
                                                                                         height: 10,

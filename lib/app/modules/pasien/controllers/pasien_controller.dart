@@ -84,6 +84,7 @@ class PasienController extends GetxController {
         var result = jsonDecode(response.body);
 
         ktpC.value = result['ktp'].toString();
+        bpjsC.value = result['bpjs'].toString();
         rmC.value = result['rm'].toString();
         bayarC.value = result['bayar'].toString();
         namaC.value = result['nama'].toString();
